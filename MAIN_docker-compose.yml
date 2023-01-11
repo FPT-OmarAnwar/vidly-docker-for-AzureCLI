@@ -1,0 +1,64 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: frontend
+    depends_on: 
+      - backend
+    build: ./frontend
+    ports:
+      - 3000:3000
+    # scale: 3
+    networks:
+      - frontend
+    # restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 3
+        failure_action: rollback
+        order: start-first
+
+  backend: 
+    image: backend
+    depends_on: 
+      - db
+    build: ./backend
+    ports: 
+      - 3001:3001
+    # scale: 3
+    env_file:
+      - .env
+    command: ./docker-entrypoint.sh
+    networks:
+      - backend
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 3
+        failure_action: rollback
+        order: start-first
+    # restart: always
+
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - vidly:/data/db
+    networks:
+      - backend
+    restart: always
+
+volumes:
+  vidly:
+
+networks:
+  frontend: {}
+  backend: {}
