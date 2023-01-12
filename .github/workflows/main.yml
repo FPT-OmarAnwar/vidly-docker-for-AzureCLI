@@ -20,9 +20,12 @@ jobs:
         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
 
     - name: docker build backend
+      # registry: docker.io
       run: |
-        docker build ./backend -t omaranwarorbispay/backend
+        docker build ./backend -t omaranwarorbispay/backend-vidly
+        docker push omaranwarorbispay/backend-vidly
     
     - name: docker build frontend
       run: |
-        docker build ./frontend -t omaranwarorbispay/frontend
+        docker build ./frontend -t omaranwarorbispay/frontend-vidly
+        docker push omaranwarorbispay/frontend-vidly
