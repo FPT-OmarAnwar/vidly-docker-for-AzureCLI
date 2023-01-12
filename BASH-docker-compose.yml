@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   frontend:
-    image: frontend
+    image: ${frontend_image}
     depends_on: 
       - backend
-    build: ./frontend
+    build: ${frontend_image_path}
     ports:
       - 3000:3000
     # scale: 3
@@ -23,10 +23,10 @@ services:
         order: start-first
 
   backend: 
-    image: backend
+    image: ${backend_image}
     depends_on: 
       - db
-    build: ./backend
+    build: ${backend_image_path}
     ports: 
       - 3001:3001
     # scale: 3
@@ -47,7 +47,7 @@ services:
     # restart: always
 
   db:
-    image: mongo:4.0-xenial
+    image: ${db_image}
     ports:
       - 27017:27017
     volumes:
