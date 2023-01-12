@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   frontend:
-    image: omaranwarorbispay/frontend
+    image: omaranwarorbispay/frontend-vidly
     depends_on: 
       - backend
     build: ./frontend
@@ -23,7 +23,7 @@ services:
         order: start-first
 
   backend: 
-    image: omaranwarorbispay/backend
+    image: omaranwarorbispay/backend-vidly
     depends_on: 
       - db
     build: ./backend
