@@ -12,10 +12,12 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
+
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USERNAME}} 
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+
       run: |
         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
 
@@ -24,8 +26,13 @@ jobs:
       run: |
         docker build ./backend -t omaranwarorbispay/backend-vidly
         docker push omaranwarorbispay/backend-vidly
-    
+
     - name: docker build frontend
       run: |
         docker build ./frontend -t omaranwarorbispay/frontend-vidly
         docker push omaranwarorbispay/frontend-vidly
+
+    - name: Docker Compose Action
+      uses: isbang/compose-action@v1.4.1
+      with:
+        compose-file: "docker-compose.yml"
