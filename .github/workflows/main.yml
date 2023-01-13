@@ -32,7 +32,7 @@ jobs:
         docker build ./frontend -t omaranwarorbispay/frontend-vidly
         docker push omaranwarorbispay/frontend-vidly
 
-    - name: Docker Compose Action
-      uses: isbang/compose-action@v1.4.1
-      with:
-        compose-file: "docker-compose.yml"
+    # - name: Docker Compose Action
+    #   uses: isbang/compose-action@v1.4.1
+    #   with:
+    #     compose-file: "docker-compose.yml"
