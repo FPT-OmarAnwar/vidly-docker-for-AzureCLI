@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   frontend:
-    image: omaranwarorbispay/frontend-vidly
+    image: omaranwarorbispay/frontend-vidly-docker-for-AzureCLI
     depends_on: 
       - backend
     build: ./frontend
@@ -23,7 +23,7 @@ services:
         order: start-first
 
   backend: 
-    image: omaranwarorbispay/backend-vidly
+    image: omaranwarorbispay/backend-vidly-docker-for-AzureCLI
     depends_on: 
       - db
     build: ./backend
