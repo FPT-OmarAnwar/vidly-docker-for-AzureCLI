@@ -25,12 +25,12 @@ jobs:
       # registry: docker.io
       run: |
         docker build ./backend -t omaranwarorbispay/backend-vidly-docker-for-azurecli
-        docker push omaranwarorbispay/backend-vidly-docker-for-AzureCLI
+        docker push omaranwarorbispay/backend-vidly-docker-for-azurecli
 
     - name: docker build frontend
       run: |
         docker build ./frontend -t omaranwarorbispay/frontend-vidly-docker-for-azurecli
-        docker push omaranwarorbispay/frontend-vidly-docker-for-AzureCLI
+        docker push omaranwarorbispay/frontend-vidly-docker-for-azurecli
 
     # - name: Docker Compose Action
     #   uses: isbang/compose-action@v1.4.1
