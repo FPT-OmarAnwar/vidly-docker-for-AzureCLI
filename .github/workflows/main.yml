@@ -24,12 +24,12 @@ jobs:
     - name: docker build backend
       # registry: docker.io
       run: |
-        docker build ./backend -t omaranwarorbispay/backend-vidly-docker-for-AzureCLI
+        docker build ./backend -t omaranwarorbispay/backend-vidly-docker-for-azurecli
         docker push omaranwarorbispay/backend-vidly-docker-for-AzureCLI
 
     - name: docker build frontend
       run: |
-        docker build ./frontend -t omaranwarorbispay/frontend-vidly-docker-for-AzureCLI
+        docker build ./frontend -t omaranwarorbispay/frontend-vidly-docker-for-azurecli
         docker push omaranwarorbispay/frontend-vidly-docker-for-AzureCLI
 
     # - name: Docker Compose Action
